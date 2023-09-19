@@ -14,17 +14,20 @@ ExpressionEvaluator<T, U>::ExpressionEvaluator(const ExpressionSpecs<T, U>& spec
             mConsecutiveOperator = i;
         }
 }
+
     template <typename T, typename U>
 void ExpressionEvaluator<T, U>::addOperator(const Operator<T>& op)
 {
     mOperators.emplace_back(op);
 }
+
     template <typename T, typename U>
 void ExpressionEvaluator<T, U>::setSpecs(const ExpressionSpecs<T,U>& specs)
 {
     mOperators = specs.sOperators;
     mConversionFunc = specs.sConverstionFunc;
 }
+
     template <typename T, typename U>
 T ExpressionEvaluator<T, U>::evaluate(std::string& expression)
 {
@@ -91,7 +94,8 @@ T ExpressionEvaluator<T, U>::evaluate(std::string& expression)
         calculate(opTop, valTop, values, op);
     return values[0];
 }
-  template <typename T, typename U>
+
+    template <typename T, typename U>
 void ExpressionEvaluator<T, U>::checkConsecutives(int i, std::string& exp
         , int& opTop, int& valTop, std::vector<T>& values
         , std::vector<Operator<T>>& op)
@@ -103,7 +107,7 @@ void ExpressionEvaluator<T, U>::checkConsecutives(int i, std::string& exp
         for (auto k : mOperators)
         {
             foundSymb |= (exp[i + 1] !='(' && (exp[i + 1] == k.symbol
-                    || exp[i + 1] == '\t' || exp[i+1] == '\n' || exp[i + 1] == ' '));
+                            || exp[i + 1] == '\t' || exp[i+1] == '\n' || exp[i + 1] == ' '));
         }
     }
     if (!foundSymb)
@@ -113,6 +117,7 @@ void ExpressionEvaluator<T, U>::checkConsecutives(int i, std::string& exp
         op[opTop++] = mConsecutiveOperator;
     }
 }
+
     template <typename T, typename U>
 void ExpressionEvaluator<T, U>::insert(T& val, int& opTop, int& valTop, std::vector<Operator<T> >& op, std::vector<T>& values)
 {
@@ -123,6 +128,7 @@ void ExpressionEvaluator<T, U>::insert(T& val, int& opTop, int& valTop, std::vec
     }
     values[valTop++] = val;
 }
+
     template <typename T, typename U>
 void ExpressionEvaluator<T, U>::calculate(int& opTop, int& valTop, std::vector<T>& values, std::vector<Operator<T> >& op)
 {
@@ -141,13 +147,14 @@ void ExpressionEvaluator<T, U>::calculate(int& opTop, int& valTop, std::vector<T
     }
     insert(ans, opTop, valTop, op, values);
 }
+
     template <typename T, typename U>
 std::ostream& operator<<(std::ostream& os, ExpressionEvaluator<T, U>& exp)
 {
     os << "operators: {";
     for (auto& i : exp.mOperators)
     {
-        os << "("<<i.symbol << ", "<< i.precedence << "), ";
+        os << "(" << i.symbol << ", " << i.precedence << "), ";
     }
     os << "}";
     return os;

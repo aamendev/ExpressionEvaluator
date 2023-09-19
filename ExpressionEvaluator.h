@@ -12,15 +12,8 @@ struct Operator
     std::function<T(T, T)> func;
     bool isUnary = false;
     bool isLeftHand = false;
-    void copyVals(Operator& op)
-    {
-        this->symbol = op.symbol;
-        this->precedence = op.precedence;
-        this->func = op.func;
-        this->isUnary = op.isUnary;
-        this->isLeftHand = op.isLeftHand;
-    }
 };
+
 template <typename T, typename U>
 struct ExpressionSpecs
 {
@@ -28,7 +21,9 @@ struct ExpressionSpecs
     std::function<T(U)> sConvertionFunc;
     bool sHandleConsecutives = false;
 };
+
 #include "utils.h"
+
 template<typename T, typename U>
 class ExpressionEvaluator
 {
@@ -54,4 +49,5 @@ class ExpressionEvaluator
         std::vector<Operator<T> > mOperators;
         std::function<T(U)> mConversionFunc;
 };
+
 #include "ExpressionEvaluatorDefinition.h"
