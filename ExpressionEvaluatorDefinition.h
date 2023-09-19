@@ -145,10 +145,11 @@ void ExpressionEvaluator<T, U>::calculate(int& opTop, int& valTop, std::vector<T
 std::ostream& operator<<(std::ostream& os, ExpressionEvaluator<T, U>& exp)
 {
     os << "operators: {";
-    /* for (auto& i : exp.mOperators)
-       {
-       os << "('"<<i.symbol << "' , "<< i.precedence << "), ";
-       }*/
+    for (auto& i : exp.mOperators)
+    {
+        os << "('"<<i.symbol << "' , "<< i.precedence << "), ";
+    }
+    os << "}";
     return os;
 }
 
