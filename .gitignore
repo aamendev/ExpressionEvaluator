@@ -2,6 +2,6 @@ tests/
 main
 *.cpp
 *.txt
-CMakeFile/
+CMake*/
 Make*
 *.cmake
