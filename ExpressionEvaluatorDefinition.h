@@ -147,7 +147,7 @@ std::ostream& operator<<(std::ostream& os, ExpressionEvaluator<T, U>& exp)
     os << "operators: {";
     for (auto& i : exp.mOperators)
     {
-        os << "('"<<i.symbol << "' , "<< i.precedence << "), ";
+        os << "("<<i.symbol << ", "<< i.precedence << "), ";
     }
     os << "}";
     return os;
