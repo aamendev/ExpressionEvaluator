@@ -1,0 +1,7 @@
+tests/
+main
+*.cpp
+*.txt
+CMakeFile/
+Make*
+*.cmake
