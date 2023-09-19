@@ -19,7 +19,6 @@ struct ExpressionSpecs
 {
     std::vector<Operator<T> >sOperators;
     std::function<T(U)> sConvertionFunc;
-    bool sHandleConsecutives = false;
 };
 
 #include "utils.h"

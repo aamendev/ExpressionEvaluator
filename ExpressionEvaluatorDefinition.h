@@ -125,7 +125,7 @@ void ExpressionEvaluator<T, U>::insert(T& val, int& opTop, int& valTop, std::vec
 {
     while (opTop && op[opTop - 1].isLeftHand)
     {
-        val = op[opTop - 1].func(val, (T)NULL);
+        val = op[opTop - 1].func(val, val);
         opTop--;
     }
     values[valTop++] = val;

@@ -50,8 +50,8 @@ namespace Common{
 namespace Global{
     template <typename T>
     Operator<T> openPara{.symbol = '(', .precedence = 0,
-        .func =[](T a, T b){return (T)NULL;}, .isUnary = false};
+        .func =[](T a, T b){return a;}, .isUnary = false};
     template <typename T>
     Operator<T> closePara{.symbol = ')', .precedence = 9,
-        .func =[](T a, T b){return (T)NULL;}, .isUnary = false};
+        .func =[](T a, T b){return a;}, .isUnary = false};
 }
