@@ -19,6 +19,8 @@ ExpressionEvaluator<T, U>::ExpressionEvaluator(const ExpressionSpecs<T, U>& spec
 void ExpressionEvaluator<T, U>::addOperator(const Operator<T>& op)
 {
     mOperators.emplace_back(op);
+    if (op.symbol == '\0')
+        mConsecutiveOperator = op;
 }
 
     template <typename T, typename U>
