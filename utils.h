@@ -11,7 +11,8 @@ namespace Common{
     T DivOp(T a, T b) { return a / b; }
     template<typename T>
     T getValFromChar(char c) { return (T)(c - '0'); }
-
+    template<typename T>
+    T DigitOp(T a, T b) {return 10 * a + b;}
     template<typename T>
     Operator<T> Add{.symbol= '+', .precedence = 1, .func = AddOp<T>,};
     template<typename T>
@@ -19,11 +20,11 @@ namespace Common{
     template<typename T>
     Operator<T> Multiply{.symbol= '*', .precedence = 2, .func = MultOp<T>,};
     template<typename T>
-    Operator<T> Multiply2{.symbol= '\0', .precedence = 2, .func = MultOp<T>,};
+    Operator<T> addDigit{.symbol= '\0', .precedence = 4, .func = DigitOp<T>,};
     template<typename T>
     Operator<T> Divide{.symbol= '/', .precedence = 2, .func = DivOp<T>,};
     template<typename T>
-    std::vector<Operator<T> > operators{Add<T>, Negate<T>, Multiply<T>,Multiply2<T>, Divide<T>};
+    std::vector<Operator<T> > operators{Add<T>, Negate<T>, Multiply<T>,addDigit<T>, Divide<T>};
     }
 
     namespace Boolean{
