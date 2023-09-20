@@ -148,7 +148,7 @@ void ExpressionEvaluator<T, U>::calculate(int& opTop, int& valTop, std::vector<T
             }
             else
             {
-                ans = i.func(a,a)
+                ans = i.func(a,a);
             }
             break;
         }
