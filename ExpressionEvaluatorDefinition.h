@@ -141,9 +141,15 @@ void ExpressionEvaluator<T, U>::calculate(int& opTop, int& valTop, std::vector<T
         if (opr.symbol == i.symbol)
         {
             T a = values[--valTop];
-            T b = values[--valTop];
-            ans = i.func(b, a);
-            valTop += i.isUnary;
+            if (!i.isunary)
+            {
+                T b = values[--valTop];
+                ans = i.func(b, a);
+            }
+            else
+            {
+                ans = i.func(a,a)
+            }
             break;
         }
     }
