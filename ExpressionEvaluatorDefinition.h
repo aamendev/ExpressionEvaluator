@@ -36,8 +36,8 @@ T ExpressionEvaluator<T, U>::evaluate(std::string& expression)
     std::vector<Operator<T> > op;
     std::vector<T> values;
     int leftHandCounts = 0;
-    values.reserve(expression.size());
-    op.reserve(expression.size());
+    values.resize(expression.size());
+    op.resize(expression.size());
     int opTop, valTop;
     opTop = 0;
     valTop = 0;
